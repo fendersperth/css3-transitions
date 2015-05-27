@@ -1,143 +1,43 @@
-# Animations with CSS3 transitions
+# Animate with CSS3 Transitions
 
-At its most basic form, CSS3 transitions work by having an initial state, final state, and a duration for the animation.
+In this presentation, I will go some CSS3 properties for transition animations and demonstrate how to use them.
 
-## Simple transitions
+## Getting Started
 
-Commonly this is achieved by having an event to change the state of an element. For example, button element with a hover state, that changes its background colour.
+At its most basic form, CSS3 transitions work by having an initial state, final state, and a duration for the animation. Commonly this is achieved by having an event to change the state of an element. 
 
-- Initial state = button is black
-- Final state = button is red
-- Duration = 0.3s // anything slower than this is usually too slow
+For example, button element with a hover state that changes its background colour.
 
-We can use the :hover state in css to change this button state.
+- Initial state: button is dark grey
+- Final state: button is light grey
+- Duration: 0.3s 
 
-```
-// simple transition
+For the example above, hovering over the button element will cause it to animate from a dark grey background colour to a light grey background colour. The transition animation will progress over a period of 0.3s, anything longer than 0.3s is usually perceived as being too slow, but this depends on the context.
 
-.button {
-	background: black;
-	border: none;
-	border-radius: 4px;
-	color: #fff;
-	padding: 5px 10px;
-	//transition-duration: 0.3s;		// add transition-duration for the browser to animate the state change effect
-}
-
-.button:hover {
-	background: red;
-}
-```
+Demo: http://codepen.io/phuongy/pen/mJOPdK?editors=110
 
 ## Using CSS3 transform
 
-We can use `transform` to manipulate the element.
+Transition animations can also work with the CSS3 `transform` property to manipulate elements. These transform properties render in the browser using hardware acceleration, so usually they will appear to be smoother.
 
-- `scale(x,y)`
-- `rotate()`
-- `translate()`
+In the next example, I will demonstrate some transform properties on the button element from the previous example.
 
-```
-// simple transforms
+Demo: http://codepen.io/phuongy/pen/zGoqww?editors=110
 
-.button {
-	background: black;
-	border: none;
-	border-radius: 4px;
-	color: #fff;
-	padding: 5px 10px;
-	transition-duration: 0.3s;	
-}
+## Tweaking your animations
 
-.button:hover {
-	transform: scale(1.1,1.1);
-	transform: rotate(90deg);
-	transform: translate(10px,0);
-	transform: scale(1.1,1.1) rotate(90deg) translate(10px,0);
-}
-```
+Timing functions allow us to refine how the animation progresses over time. By default, the timing function used in our animations is `linear`, meaning the animation progression over time is constant.
 
-## Mixing things up
+This website by Lea Verou, http://cubic-bezier.com/, gives us an elegant way to visualise the animation progression over time.
 
-We can achieve interesting effects if we add transition changes to pseudo elements.
+To achieve a better result, use `cubic-bezier` timing function to refine your animation and produce some more interesting effects.
 
-```
-// delete button
-// - using delay
-// - opacity
-// - multiple transforms
-// - timing function
+Demo: http://codepen.io/phuongy/pen/zGozKa?editors=110
 
-.button {
-	background: black;
-	border: none;
-	border-radius: 4px;
-	color: #fff;
-	padding: 5px 10px;
-	transition-duration: 0.3s;	
-}
+## How about 3D Transforms?
 
-.button:hover {
+Three dimensional effects can easily be achieved using methods similar to those from the previous examples. The main difference now is that you need to setup a `perspective`, which will be explained in the next demo.
 
-}
-
-.button:after {
-	background: rgba(255,255,255,0);
-	content: ‘X’;
-	transform: translate(0,0);
-	transition-duration: 0.3s;
-}
-
-.button:after:hover {
-	background: rgba(255,255,255,0.2);
-	transform: translate(100%,0);
-}	
-```
-
-## Achieving more realistic animations with timing functions
-
-Don’t use `linear`, `ease-in`, `ease-out`, or `ease-in-out`.
-
-To achieve a better result, use `cubic-bezier`.
-
-Tweak the curve and experiment with the effects.
-- bounce effect
-- tweaking the speed
-
-## How about some 3D transitions?
-
-Provide context for notifications or errors.
-
-```
-.container {
-	perspective: 1000;
-}
-
-.form {
-
-}
-
-.form.error {
-	
-}
-
-.button {
-
-}
-
-.button:hover, .button:active {
-
-}
-
-.dropdown {
-	transform: rotateX(-0.25turn);
-}
-
-.dropdown.active {
-	transform: rotateX(0);
-}
-```
-
-
+Demo: http://codepen.io/phuongy/pen/RPoxxg?editors=110
 
 
